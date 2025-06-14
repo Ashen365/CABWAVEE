@@ -6,8 +6,39 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize all components
     initFormValidation();
     initBookingForm();
-    initMobileMenu();
+    initTooltips();
+    initAnimationObserver();
+    
+    // Check if Magic UI is loaded and initialize components
+    if (typeof MagicUI !== 'undefined') {
+        initMagicUI();
+    }
 });
+
+/**
+ * Initialize Magic UI Components
+ */
+function initMagicUI() {
+    // Initialize tooltips
+    if (MagicUI.Tooltip) {
+        new MagicUI.Tooltip(document.querySelectorAll('[data-tooltip]'));
+    }
+    
+    // Initialize dropdowns
+    if (MagicUI.Dropdown) {
+        new MagicUI.Dropdown(document.querySelectorAll('.dropdown-toggle'));
+    }
+    
+    // Initialize modals
+    if (MagicUI.Modal) {
+        new MagicUI.Modal(document.querySelectorAll('[data-toggle="modal"]'));
+    }
+    
+    // Initialize tabs
+    if (MagicUI.Tabs) {
+        new MagicUI.Tabs(document.querySelectorAll('[data-toggle="tab"]'));
+    }
+}
 
 /**
  * Form Validation
@@ -133,6 +164,12 @@ function initBookingForm() {
                         const estimatedFare = baseFare + (randomDistance * 10);
                         
                         fareEstimateElement.textContent = `Estimated fare: ₹${estimatedFare} (${randomDistance} km)`;
+                        
+                        // Add animation to the fare estimate
+                        fareEstimateElement.classList.add('highlight-animation');
+                        setTimeout(() => {
+                            fareEstimateElement.classList.remove('highlight-animation');
+                        }, 1500);
                     }
                 }
             });
@@ -141,33 +178,60 @@ function initBookingForm() {
 }
 
 /**
- * Mobile Menu Toggle
+ * Initialize Tooltips
  */
-function initMobileMenu() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navMenu = document.querySelector('nav ul');
-    
-    if (menuToggle && navMenu) {
-        menuToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-            menuToggle.classList.toggle('active');
-        });
-    }
-    
-    // Add menu toggle button if it doesn't exist yet and we're on mobile
-    if (!menuToggle && navMenu && window.innerWidth < 768) {
-        const header = document.querySelector('header .container');
-        if (header) {
-            const toggle = document.createElement('button');
-            toggle.className = 'menu-toggle';
-            toggle.innerHTML = '<span></span><span></span><span></span>';
-            header.appendChild(toggle);
+function initTooltips() {
+    const tooltips = document.querySelectorAll('[data-tooltip]');
+    tooltips.forEach(element => {
+        const tooltipText = element.getAttribute('data-tooltip');
+        
+        element.addEventListener('mouseenter', function() {
+            const tooltip = document.createElement('div');
+            tooltip.className = 'tooltip';
+            tooltip.textContent = tooltipText;
+            document.body.appendChild(tooltip);
             
-            toggle.addEventListener('click', function() {
-                navMenu.classList.toggle('active');
-                toggle.classList.toggle('active');
+            const rect = element.getBoundingClientRect();
+            tooltip.style.top = rect.bottom + window.scrollY + 10 + 'px';
+            tooltip.style.left = rect.left + window.scrollX + (rect.width / 2) - (tooltip.offsetWidth / 2) + 'px';
+            
+            setTimeout(() => {
+                tooltip.classList.add('show');
+            }, 10);
+            
+            element.addEventListener('mouseleave', function handler() {
+                tooltip.classList.remove('show');
+                setTimeout(() => {
+                    document.body.removeChild(tooltip);
+                }, 300);
+                element.removeEventListener('mouseleave', handler);
             });
-        }
+        });
+    });
+}
+
+/**
+ * Initialize Intersection Observer for Animations
+ */
+function initAnimationObserver() {
+    // Only initialize if IntersectionObserver is supported and GSAP is not being used
+    if ('IntersectionObserver' in window && typeof gsap === 'undefined') {
+        const elements = document.querySelectorAll('.feature, .step, .testimonial, .cta-section');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        elements.forEach(element => {
+            observer.observe(element);
+        });
     }
 }
 
@@ -177,65 +241,4 @@ function initMobileMenu() {
 function isValidEmail(email) {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
-}
-
-/**
- * Add dynamic styles for mobile menu
- */
-if (document.querySelector('header')) {
-    const style = document.createElement('style');
-    style.textContent = `
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                width: 30px;
-                height: 21px;
-                background: transparent;
-                border: none;
-                cursor: pointer;
-                padding: 0;
-                z-index: 10;
-            }
-            
-            .menu-toggle span {
-                display: block;
-                width: 100%;
-                height: 3px;
-                background-color: white;
-                border-radius: 3px;
-                transition: all 0.3s ease;
-            }
-            
-            .menu-toggle.active span:nth-child(1) {
-                transform: translateY(9px) rotate(45deg);
-            }
-            
-            .menu-toggle.active span:nth-child(2) {
-                opacity: 0;
-            }
-            
-            .menu-toggle.active span:nth-child(3) {
-                transform: translateY(-9px) rotate(-45deg);
-            }
-            
-            nav ul {
-                display: none;
-            }
-            
-            nav ul.active {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 60px;
-                left: 0;
-                right: 0;
-                background-color: var(--dark-color);
-                z-index: 1000;
-                padding: 10px;
-            }
-        }
-    `;
-    document.head.appendChild(style);
 }

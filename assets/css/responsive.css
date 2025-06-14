@@ -1,23 +1,209 @@
+/* Responsive Styles */
+
+@media (max-width: 1200px) {
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+    
+    .features, .steps, .testimonials {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 992px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero p {
+        font-size: 1.1rem;
+    }
+    
+    .section-title, 
+    .how-it-works h2, 
+    .cta-section h2 {
+        font-size: 2rem;
+    }
+    
+    .feature-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+    }
+    
+    .step-number {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+}
+
 @media (max-width: 768px) {
-    header .container {
-        flex-direction: column;
+    /* Header and Navigation handled in header.css */
+    
+    main.container {
+        padding-top: 20px;
     }
     
-    nav {
-        margin-top: 1rem;
+    .hero {
+        padding: 60px 20px;
+        margin-bottom: 50px;
+        border-radius: 12px;
     }
     
-    nav ul {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+    
+    .hero-buttons {
         flex-direction: column;
         align-items: center;
     }
     
-    nav ul li {
-        margin: 0.5rem 0;
+    .hero-buttons .btn {
+        width: 100%;
+        max-width: 250px;
+        margin-bottom: 10px;
     }
     
+    .features, .steps, .testimonials {
+        gap: 20px;
+        margin-bottom: 50px;
+    }
+    
+    .feature, .step, .testimonial {
+        padding: 25px 20px;
+    }
+    
+    .feature h3, .step h3 {
+        font-size: 1.3rem;
+    }
+    
+    .how-it-works {
+        padding: 50px 0;
+        margin-bottom: 50px;
+    }
+    
+    .how-it-works h2, .section-title {
+        margin-bottom: 40px;
+        font-size: 1.8rem;
+    }
+    
+    .cta-section {
+        padding: 50px 20px;
+        margin-bottom: 50px;
+    }
+    
+    .cta-section h2 {
+        font-size: 1.8rem;
+    }
+    
+    .cta-section p {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+    
+    footer {
+        padding: 50px 0 20px;
+        margin-top: 50px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    /* Table responsiveness */
     table {
         display: block;
         overflow-x: auto;
+        white-space: nowrap;
+    }
+    
+    form {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+        max-width: 220px;
+        padding: 0.8rem 1.5rem;
+    }
+    
+    .feature-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+    }
+    
+    .step-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+    
+    .feature h3, .step h3 {
+        font-size: 1.2rem;
+    }
+    
+    .testimonial-avatar {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .testimonial-info h4 {
+        font-size: 1rem;
+    }
+    
+    .footer-section h3 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    header, footer, .hero, .cta-section, .how-it-works, .features {
+        display: none;
+    }
+    
+    body {
+        font-size: 12pt;
+        line-height: 1.5;
+        color: #000;
+        background: #fff;
+    }
+    
+    a {
+        text-decoration: underline;
+        color: #000;
+    }
+    
+    .container {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    
+    table, th, td {
+        border: 1px solid #000;
     }
 }

@@ -1,7 +1,35 @@
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 header {
     background-color: var(--dark-color);
     color: white;
     padding: 1rem 0;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1000;
+}
+
+/* Sticky header styling */
+header.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    padding: 0.7rem 0;
+    animation: slideDown 0.3s ease-in-out;
+    background-color: rgba(42, 42, 54, 0.98);
+    backdrop-filter: blur(10px);
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
 }
 
 header .container {
@@ -10,26 +38,166 @@ header .container {
     align-items: center;
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+    z-index: 1001;
+}
+
 .logo h1 {
     font-size: 1.5rem;
     margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+nav {
+    position: relative;
 }
 
 nav ul {
     display: flex;
     list-style: none;
+    margin: 0;
+    padding: 0;
+    transition: all 0.3s ease;
 }
 
 nav ul li {
-    margin-left: 1rem;
+    margin-left: 1.5rem;
+    position: relative;
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
     transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0.5rem 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li a i {
+    margin-right: 5px;
+    font-size: 1rem;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--secondary-color);
+    transition: width 0.3s ease;
 }
 
 nav ul li a:hover {
     color: var(--secondary-color);
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* Mobile menu button */
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.mobile-menu-btn span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-btn.active span:nth-child(1) {
+    transform: translateY(9.5px) rotate(45deg);
+}
+
+.mobile-menu-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-btn.active span:nth-child(3) {
+    transform: translateY(-9.5px) rotate(-45deg);
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: flex;
+    }
+    
+    nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 320px;
+        height: 100vh;
+        background-color: var(--dark-color);
+        padding: 80px 20px 20px;
+        transition: right 0.3s ease;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        overflow-y: auto;
+    }
+    
+    nav.active {
+        right: 0;
+    }
+    
+    body.menu-open {
+        overflow: hidden;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    nav ul li {
+        margin: 0;
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    nav ul li a {
+        display: block;
+        padding: 15px 0;
+        width: 100%;
+    }
+    
+    nav ul li a i {
+        width: 25px;
+        text-align: center;
+    }
+    
+    nav ul li a::after {
+        display: none;
+    }
 }

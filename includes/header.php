@@ -37,12 +37,15 @@ require_once $basePath . 'includes/db.php';
     <link rel="stylesheet" href="<?php echo $basePath; ?>assets/css/header.css">
     <link rel="stylesheet" href="<?php echo $basePath; ?>assets/css/responsive.css">
     <link rel="stylesheet" href="<?php echo $basePath; ?>assets/css/animations.css">
+    
+    <!-- Modern Home CSS -->
+    <link rel="stylesheet" href="<?php echo $basePath; ?>assets/css/modern-home.css">
 </head>
 <body class="page-transition">
     <header>
         <div class="container">
             <div class="logo">
-                <img src="<?php echo $basePath; ?>assets/images/logo.svg" alt="<?php echo SITE_NAME; ?> Logo">
+                <h1>CABWAVE</h1>
             </div>
             <nav>
                 <ul>

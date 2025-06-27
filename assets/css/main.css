@@ -728,7 +728,7 @@ footer::before {
 .tooltip {
     position: absolute;
     background-color: var(--dark-color);
-    color: white;
+    color: white; 
     padding: 8px 12px;
     border-radius: 4px;
     font-size: 0.85rem;

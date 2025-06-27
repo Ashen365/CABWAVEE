@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+    <defs>
+        <linearGradient id="booking-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#C084FC" />
+            <stop offset="100%" stop-color="#8B5CF6" />
+        </linearGradient>
+        <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+            <feDropShadow dx="2" dy="3" stdDeviation="3" flood-color="#000" flood-opacity="0.15" />
+        </filter>
+    </defs>
+
+    <!-- Background Circle -->
+    <circle cx="100" cy="100" r="90" fill="#F9FAFB" filter="url(#shadow)" />
+
+    <!-- Number Circle -->
+    <circle cx="40" cy="40" r="30" fill="url(#booking-gradient)" />
+    <text x="40" y="48" font-family="Arial" font-size="26" font-weight="bold" fill="white"
+        text-anchor="middle">2</text>
+
+    <!-- Booking Form -->
+    <g transform="translate(55, 55)">
+        <!-- Form Background -->
+        <rect x="0" y="0" width="90" height="110" rx="8" fill="white"
+            stroke="url(#booking-gradient)" stroke-width="3" />
+
+        <!-- Form Header -->
+        <rect x="0" y="0" width="90" height="25" rx="8 8 0 0" fill="url(#booking-gradient)" />
+        <circle cx="15" cy="12.5" r="5" fill="white" opacity="0.7" />
+        <rect x="25" y="10" width="30" height="5" rx="2.5" fill="white" opacity="0.7" />
+
+        <!-- Form Fields -->
+        <rect x="10" y="35" width="70" height="10" rx="5" fill="#E5E7EB" />
+        <rect x="10" y="55" width="70" height="10" rx="5" fill="#E5E7EB" />
+
+        <!-- Map Preview -->
+        <rect x="10" y="75" width="70" height="25" rx="5" fill="#E5E7EB" />
+        <circle cx="25" cy="85" r="5" fill="url(#booking-gradient)" opacity="0.7" />
+        <circle cx="65" cy="90" r="5" fill="#22C55E" opacity="0.7" />
+        <path d="M25,85 Q45,70 65,90" stroke="#9CA3AF" stroke-width="2" fill="none"
+            stroke-dasharray="4 2" />
+    </g>
+
+    <!-- Taxi Icon -->
+    <g transform="translate(125, 135) scale(0.6) rotate(15)">
+        <rect x="-5" y="-5" width="40" height="20" rx="5" fill="#FFD700" />
+        <rect x="25" y="0" width="10" height="10" fill="#FFD700" />
+        <rect x="5" y="15" width="10" height="7" rx="3.5" fill="#333" />
+        <rect x="25" y="15" width="10" height="7" rx="3.5" fill="#333" />
+        <rect x="0" y="5" width="5" height="3" fill="#FF3B30" />
+        <rect x="35" y="5" width="5" height="3" fill="#FF3B30" />
+    </g>
+</svg>

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+    <defs>
+        <linearGradient id="pickup-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#C084FC" />
+            <stop offset="100%" stop-color="#8B5CF6" />
+        </linearGradient>
+        <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+            <feDropShadow dx="2" dy="3" stdDeviation="3" flood-color="#000" flood-opacity="0.15" />
+        </filter>
+    </defs>
+
+    <!-- Background Circle -->
+    <circle cx="100" cy="100" r="90" fill="#F9FAFB" filter="url(#shadow)" />
+
+    <!-- Number Circle -->
+    <circle cx="40" cy="40" r="30" fill="url(#pickup-gradient)" />
+    <text x="40" y="48" font-family="Arial" font-size="26" font-weight="bold" fill="white"
+        text-anchor="middle">3</text>
+
+    <!-- Map Background -->
+    <rect x="50" y="60" width="100" height="100" rx="8" fill="#E5E7EB" />
+
+    <!-- Roads -->
+    <rect x="95" y="60" width="10" height="100" fill="#D1D5DB" />
+    <rect x="50" y="105" width="100" height="10" fill="#D1D5DB" />
+
+    <!-- Location Marker -->
+    <g transform="translate(100, 110)">
+        <path
+            d="M0,-20 C-11,-20 -20,-11 -20,0 C-20,15 0,30 0,30 C0,30 20,15 20,0 C20,-11 11,-20 0,-20 Z"
+            fill="url(#pickup-gradient)" />
+        <circle cx="0" cy="0" r="7" fill="white" />
+    </g>
+
+    <!-- Taxi -->
+    <g transform="translate(65, 140)">
+        <!-- Main Body -->
+        <rect x="0" y="0" width="30" height="15" rx="3" fill="#FFD700" />
+        <rect x="22" y="3" width="8" height="9" fill="#B7E1F7" /> <!-- Window -->
+        <rect x="5" y="3" width="10" height="9" fill="#B7E1F7" /> <!-- Window -->
+
+        <!-- Wheels -->
+        <circle cx="7" cy="15" r="4" fill="#333" />
+        <circle cx="23" cy="15" r="4" fill="#333" />
+
+        <!-- Taxi Light -->
+        <rect x="12" y="-3" width="6" height="3" rx="1.5" fill="#FFD700" />
+
+        <!-- Movement Lines -->
+        <line x1="-10" y1="12" x2="-5" y2="12" stroke="#333" stroke-width="2" stroke-linecap="round" />
+        <line x1="-15" y1="8" x2="-7" y2="8" stroke="#333" stroke-width="2" stroke-linecap="round" />
+    </g>
+
+    <!-- User -->
+    <g transform="translate(130, 85)">
+        <circle cx="0" cy="0" r="8" fill="#22C55E" />
+        <circle cx="0" cy="-4" r="3" fill="#F9FAFB" />
+        <path d="M0,0 C-4,0 -6,4 -6,8 L6,8 C6,4 4,0 0,0 Z" fill="#F9FAFB" />
+
+        <!-- Waiting Animation -->
+        <circle cx="8" cy="0" r="1.5" fill="#22C55E" opacity="0.8">
+            <animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="12" cy="0" r="1.5" fill="#22C55E" opacity="0.6">
+            <animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" begin="0.25s"
+                repeatCount="indefinite" />
+        </circle>
+        <circle cx="16" cy="0" r="1.5" fill="#22C55E" opacity="0.4">
+            <animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" begin="0.5s"
+                repeatCount="indefinite" />
+        </circle>
+    </g>
+</svg>

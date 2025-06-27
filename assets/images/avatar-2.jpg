@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="avatar-gradient-2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EC4899" />
+      <stop offset="100%" stop-color="#8B5CF6" />
+    </linearGradient>
+  </defs>
+  
+  <circle cx="100" cy="100" r="100" fill="url(#avatar-gradient-2)" />
+  
+  <!-- User Silhouette -->
+  <circle cx="100" cy="85" r="35" fill="#FFFFFF" opacity="0.8" />
+  <path d="M100,130 C70,130 45,150 40,180 L160,180 C155,150 130,130 100,130 Z" fill="#FFFFFF" opacity="0.8" />
+  
+  <!-- Name Initial -->
+  <text x="100" y="110" font-family="Arial" font-size="65" font-weight="bold" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle">S</text>
+</svg>

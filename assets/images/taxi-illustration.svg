@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+    <defs>
+        <linearGradient id="taxi-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#6366F1" />
+            <stop offset="100%" stop-color="#8B5CF6" />
+        </linearGradient>
+        <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+            <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.2" />
+        </filter>
+    </defs>
+
+    <!-- Road -->
+    <rect x="50" y="240" width="300" height="20" rx="2" fill="#333" />
+    <rect x="60" y="250" width="20" height="5" fill="white" />
+    <rect x="100" y="250" width="20" height="5" fill="white" />
+    <rect x="140" y="250" width="20" height="5" fill="white" />
+    <rect x="180" y="250" width="20" height="5" fill="white" />
+    <rect x="220" y="250" width="20" height="5" fill="white" />
+    <rect x="260" y="250" width="20" height="5" fill="white" />
+    <rect x="300" y="250" width="20" height="5" fill="white" />
+
+    <!-- Taxi Body -->
+    <g filter="url(#shadow)">
+        <!-- Main Body -->
+        <path d="M280,180 L300,200 L300,230 L100,230 L100,200 L120,180 L280,180 Z" fill="#FFD700" />
+
+        <!-- Windows -->
+        <path d="M275,180 L290,200 L210,200 L220,180 L275,180 Z" fill="#B7E1F7" />
+        <path d="M125,180 L110,200 L190,200 L180,180 L125,180 Z" fill="#B7E1F7" />
+
+        <!-- Details -->
+        <rect x="200" y="200" width="4" height="30" fill="#333" />
+        <rect x="290" y="205" width="15" height="10" rx="2" fill="#FF3B30" /> <!-- Taillight -->
+        <rect x="95" y="205" width="15" height="10" rx="2" fill="#FFCC00" /> <!-- Headlight -->
+
+        <!-- Wheels -->
+        <circle cx="130" cy="230" r="20" fill="#333" />
+        <circle cx="130" cy="230" r="10" fill="#666" />
+        <circle cx="270" cy="230" r="20" fill="#333" />
+        <circle cx="270" cy="230" r="10" fill="#666" />
+
+        <!-- Taxi Sign -->
+        <rect x="190" y="170" width="20" height="10" rx="2" fill="#FFF" stroke="#333" />
+        <text x="192" y="178" font-family="Arial" font-size="8" font-weight="bold" fill="#333">TAXI</text>
+
+        <!-- Checkerboard Pattern -->
+        <rect x="140" y="210" width="10" height="10" fill="#000" />
+        <rect x="150" y="210" width="10" height="10" fill="#FFD700" />
+        <rect x="160" y="210" width="10" height="10" fill="#000" />
+        <rect x="170" y="210" width="10" height="10" fill="#FFD700" />
+        <rect x="140" y="220" width="10" height="10" fill="#FFD700" />
+        <rect x="150" y="220" width="10" height="10" fill="#000" />
+        <rect x="160" y="220" width="10" height="10" fill="#FFD700" />
+        <rect x="170" y="220" width="10" height="10" fill="#000" />
+    </g>
+
+    <!-- City Skyline Background -->
+    <path
+        d="M50,180 L60,160 L70,170 L80,150 L90,170 L100,140 L110,170 L120,150 L130,160 L140,140 L150,180 Z"
+        fill="#334155" opacity="0.5" />
+    <path
+        d="M250,180 L260,150 L270,170 L280,140 L290,160 L300,130 L310,150 L320,140 L330,160 L340,130 L350,180 Z"
+        fill="#334155" opacity="0.5" />
+
+    <!-- Decorative Elements -->
+    <circle cx="70" cy="100" r="15" fill="url(#taxi-gradient)" opacity="0.7" />
+    <circle cx="330" cy="120" r="10" fill="url(#taxi-gradient)" opacity="0.7" />
+    <circle cx="280" cy="80" r="8" fill="url(#taxi-gradient)" opacity="0.4" />
+</svg>
